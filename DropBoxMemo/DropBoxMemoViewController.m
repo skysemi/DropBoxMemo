@@ -9,6 +9,7 @@
 #import "DropBoxMemoViewController.h"
 
 @interface DropBoxMemoViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *myMemo;
 
 @end
 
@@ -18,6 +19,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self LoadMemo];
+    
+    
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(SaveMemo) userInfo:nil repeats:YES];
+}
+
+-(void)SaveMemo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.myMemo.text forKey:@"MemoString"];
+
+}
+
+-(void)LoadMemo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.myMemo.text = [defaults objectForKey:@"MemoString"];
+    
 }
 
 - (void)didReceiveMemoryWarning

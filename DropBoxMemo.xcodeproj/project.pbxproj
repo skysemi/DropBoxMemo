@@ -21,6 +21,8 @@
 		C9CAB3E3198FB71D0004B6D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CAB3C5198FB71D0004B6D6 /* UIKit.framework */; };
 		C9CAB3EB198FB71D0004B6D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9CAB3E9198FB71D0004B6D6 /* InfoPlist.strings */; };
 		C9CAB3ED198FB71D0004B6D6 /* DropBoxMemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CAB3EC198FB71D0004B6D6 /* DropBoxMemoTests.m */; };
+		C9CAB3F8198FBB390004B6D6 /* DropBoxMemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CAB3F7198FBB390004B6D6 /* DropBoxMemoTableViewController.m */; };
+		C9CAB3FB198FBD650004B6D6 /* MemoData.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CAB3FA198FBD650004B6D6 /* MemoData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		C9CAB3E8198FB71D0004B6D6 /* DropBoxMemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DropBoxMemoTests-Info.plist"; sourceTree = "<group>"; };
 		C9CAB3EA198FB71D0004B6D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9CAB3EC198FB71D0004B6D6 /* DropBoxMemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropBoxMemoTests.m; sourceTree = "<group>"; };
+		C9CAB3F6198FBB390004B6D6 /* DropBoxMemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxMemoTableViewController.h; sourceTree = "<group>"; };
+		C9CAB3F7198FBB390004B6D6 /* DropBoxMemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxMemoTableViewController.m; sourceTree = "<group>"; };
+		C9CAB3F9198FBD650004B6D6 /* MemoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoData.h; sourceTree = "<group>"; };
+		C9CAB3FA198FBD650004B6D6 /* MemoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,10 @@
 				C9CAB3D0198FB71D0004B6D6 /* DropBoxMemoAppDelegate.h */,
 				C9CAB3D1198FB71D0004B6D6 /* DropBoxMemoAppDelegate.m */,
 				C9CAB3D3198FB71D0004B6D6 /* Main.storyboard */,
+				C9CAB3F9198FBD650004B6D6 /* MemoData.h */,
+				C9CAB3FA198FBD650004B6D6 /* MemoData.m */,
+				C9CAB3F6198FBB390004B6D6 /* DropBoxMemoTableViewController.h */,
+				C9CAB3F7198FBB390004B6D6 /* DropBoxMemoTableViewController.m */,
 				C9CAB3D6198FB71D0004B6D6 /* DropBoxMemoViewController.h */,
 				C9CAB3D7198FB71D0004B6D6 /* DropBoxMemoViewController.m */,
 				C9CAB3D9198FB71D0004B6D6 /* Images.xcassets */,
@@ -250,9 +260,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9CAB3F8198FBB390004B6D6 /* DropBoxMemoTableViewController.m in Sources */,
 				C9CAB3D8198FB71D0004B6D6 /* DropBoxMemoViewController.m in Sources */,
 				C9CAB3CE198FB71D0004B6D6 /* main.m in Sources */,
 				C9CAB3D2198FB71D0004B6D6 /* DropBoxMemoAppDelegate.m in Sources */,
+				C9CAB3FB198FBD650004B6D6 /* MemoData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
