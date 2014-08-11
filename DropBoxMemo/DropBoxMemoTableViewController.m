@@ -30,16 +30,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+	;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
+//    DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    
+	
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,6 +70,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MemoCell" forIndexPath:indexPath ];
+	
+//	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MemoCell"];
     
     DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -171,7 +174,14 @@
     }else{
         addmemo.Title = @"無題";
     }
-    [delegate.MemoDataArray addObject:addmemo];
+//    [delegate.MemoDataArray addObject:addmemo];
+	if(delegate.MemoDataArray == nil){
+		delegate.MemoDataArray = [[NSMutableArray alloc] init];
+	}
+	[delegate.MemoDataArray insertObject:addmemo atIndex:0];
+	
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+	[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     //ここから次回続き
     
     /*else{
@@ -180,5 +190,9 @@
         alert.alertViewStyle = UIAlertViewStyleDefault;
         [alert show];
     }*/
+
+}
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+	return YES;
 }
 @end

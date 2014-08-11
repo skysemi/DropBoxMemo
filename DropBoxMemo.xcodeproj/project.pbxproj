@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2B432561998EB1200D241F7 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B432551998EB1200D241F7 /* DropboxSDK.framework */; };
 		C9CAB3C2198FB71D0004B6D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CAB3C1198FB71D0004B6D6 /* Foundation.framework */; };
 		C9CAB3C4198FB71D0004B6D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CAB3C3198FB71D0004B6D6 /* CoreGraphics.framework */; };
 		C9CAB3C6198FB71D0004B6D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CAB3C5198FB71D0004B6D6 /* UIKit.framework */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C2B432551998EB1200D241F7 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		C9CAB3BE198FB71D0004B6D6 /* DropBoxMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropBoxMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9CAB3C1198FB71D0004B6D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9CAB3C3198FB71D0004B6D6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2B432561998EB1200D241F7 /* DropboxSDK.framework in Frameworks */,
 				C9CAB3C4198FB71D0004B6D6 /* CoreGraphics.framework in Frameworks */,
 				C9CAB3C6198FB71D0004B6D6 /* UIKit.framework in Frameworks */,
 				C9CAB3C2198FB71D0004B6D6 /* Foundation.framework in Frameworks */,
@@ -118,6 +121,7 @@
 		C9CAB3C7198FB71D0004B6D6 /* DropBoxMemo */ = {
 			isa = PBXGroup;
 			children = (
+				C2B432551998EB1200D241F7 /* DropboxSDK.framework */,
 				C9CAB3D0198FB71D0004B6D6 /* DropBoxMemoAppDelegate.h */,
 				C9CAB3D1198FB71D0004B6D6 /* DropBoxMemoAppDelegate.m */,
 				C9CAB3D3198FB71D0004B6D6 /* Main.storyboard */,
@@ -389,6 +393,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DropBoxMemo",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DropBoxMemo/DropBoxMemo-Prefix.pch";
 				INFOPLIST_FILE = "DropBoxMemo/DropBoxMemo-Info.plist";
@@ -402,6 +410,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DropBoxMemo",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DropBoxMemo/DropBoxMemo-Prefix.pch";
 				INFOPLIST_FILE = "DropBoxMemo/DropBoxMemo-Info.plist";
@@ -469,6 +481,7 @@
 				C9CAB3F2198FB71D0004B6D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9CAB3F3198FB71D0004B6D6 /* Build configuration list for PBXNativeTarget "DropBoxMemoTests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +490,7 @@
 				C9CAB3F5198FB71D0004B6D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
