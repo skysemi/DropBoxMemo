@@ -7,10 +7,10 @@
 //
 
 #import "DropBoxMemoViewController.h"
+#import <DropboxSDK/DropboxSDK.h>
 
 @interface DropBoxMemoViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *myMemo;
-
 @end
 
 @implementation DropBoxMemoViewController
@@ -38,6 +38,20 @@
     self.myMemo.text = [defaults objectForKey:@"MemoString"];
     
 }
+
+- (DBRestClient *)restClient
+{
+    if (_restClient == nil) {
+        if ( [[DBSession sharedSession].userIds count] ) {
+            _restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+            _restClient.delegate = self;
+        }
+    }
+	
+    return _restClient;
+	
+}
+
 
 - (void)didReceiveMemoryWarning
 {
