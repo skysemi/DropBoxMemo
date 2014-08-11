@@ -7,12 +7,19 @@
 //
 
 #import "DropBoxMemoAppDelegate.h"
+#import <DropboxSDK/DropboxSDK.h>
 
 @implementation DropBoxMemoAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+	DBSession* dbSession =
+    [[DBSession alloc]
+     initWithAppKey:@"xxxxxx"
+     appSecret:@"xxxxxx"
+     root:kDBRootDropbox]; // either kDBRootAppFolder or kDBRootDropbox
+    [DBSession setSharedSession:dbSession];
+	
     return YES;
 }
 							

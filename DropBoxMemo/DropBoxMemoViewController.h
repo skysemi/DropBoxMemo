@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DropboxSDK/DropboxSDK.h>
 
-@interface DropBoxMemoViewController : UIViewController
+@interface DropBoxMemoViewController : UIViewController<DBRestClientDelegate>
+
+@property (strong, nonatomic) DBRestClient* restClient;
 
 @end
