@@ -9,8 +9,16 @@
 #import "DropBoxMemoViewController.h"
 #import <DropboxSDK/DropboxSDK.h>
 
-@interface DropBoxMemoViewController ()
+
+#import "DropBoxMemoAppDelegate.h"
+#import "MemoData.h"
+
+@interface DropBoxMemoViewController (){
+    DropBoxMemoAppDelegate *delegate;
+}
 @property (weak, nonatomic) IBOutlet UITextView *myMemo;
+- (IBAction)ReturnButton:(UIBarButtonItem *)sender;
+
 @end
 
 @implementation DropBoxMemoViewController
@@ -19,14 +27,42 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    delegate= (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [self LoadFromMemoDataArray];
+
+    
+    
+    
+    
     [self LoadMemo];
     
     
     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(SaveMemo) userInfo:nil repeats:YES];
 }
 
+-(void)LoadFromMemoDataArray
+{
+    MemoData *TargetMemoData = [delegate.MemoDataArray objectAtIndex:self.TabelViewRow];
+    
+    self.myMemo.text = TargetMemoData.MemoContent;
+    
+    
+}
+
+-(void)SaveToMemoDataArray
+{
+    
+    MemoData *TargetMemoData = [delegate.MemoDataArray objectAtIndex:self.TabelViewRow];
+    TargetMemoData.MemoContent = self.myMemo.text;
+    
+}
+
+
 -(void)SaveMemo
 {
+    [self  SaveToMemoDataArray];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.myMemo.text forKey:@"MemoString"];
 
@@ -59,4 +95,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)ReturnButton:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

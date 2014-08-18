@@ -9,11 +9,15 @@
 #import "DropBoxMemoTableViewController.h"
 
 //ユーザーインポート
+#import "DropBoxMemoViewController.h"
 #import "DropBoxMemoAppDelegate.h"
 #import "MemoData.h"
 
-@interface DropBoxMemoTableViewController ()
-
+@interface DropBoxMemoTableViewController (){
+//MemoData *TargerMemo ;
+    int TargetRow;
+}
+    
 @end
 
 @implementation DropBoxMemoTableViewController
@@ -31,7 +35,6 @@
 {
     [super viewDidLoad];
 
-	;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -79,6 +82,28 @@
     cell.textLabel.text = memo.Title;
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   // DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    
+    // Return the number of rows in the section.
+    TargetRow = indexPath.row;
+    
+    
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"toMemoSegue"]){
+        DropBoxMemoViewController *vc = (DropBoxMemoViewController*)[[segue destinationViewController] topViewController];
+        // 移行先の ViewController に画像名を渡す
+    vc.TabelViewRow = TargetRow;
+       // [(DropBoxMemoViewController*)[segue destinationViewController] ].TabelViewRow = TargetRow;
+        
+    }
 }
 
 /*

@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <DropboxSDK/DropboxSDK.h>
 
+
+#import "MemoData.h"
+
 @interface DropBoxMemoViewController : UIViewController<DBRestClientDelegate>
 
 @property (strong, nonatomic) DBRestClient* restClient;
+
+
+@property (strong,nonatomic) MemoData *PushMemoData;
+@property (nonatomic)int TabelViewRow;
 
 @end
