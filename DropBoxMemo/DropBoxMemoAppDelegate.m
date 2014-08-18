@@ -22,7 +22,7 @@
         MemoData *memo;
         memo.MemoContent = [defaults stringForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestContentNo",i]];
         memo.Title       = [defaults stringForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestTitleNo",i]];
-        self.MemoDataArray[i] = memo;
+        [self.MemoDataArray addObject:memo];
         
     }
 	

@@ -65,7 +65,7 @@
     [self  SaveToMemoDataArray];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.myMemo forKey:[NSString stringWithFormat:@"%@%d",@"MemoTestNo",self.TabelViewRow]];
+    //[defaults setObject:self.myMemo forKey:[NSString stringWithFormat:@"%@%d",@"MemoTestNo",self.TabelViewRow]];
     [defaults setInteger:delegate.MemoDataArray.count forKey:@"MemoDataArrayCount"];
     
 
