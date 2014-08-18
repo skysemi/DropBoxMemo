@@ -81,7 +81,11 @@
                                 <action selector="ReturnButton:" destination="vXZ-lx-hvc" id="RFU-DJ-jGI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="hBy-tR-SFU"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="hBy-tR-SFU">
+                            <connections>
+                                <action selector="SaveButtonClick:" destination="vXZ-lx-hvc" id="U71-ZG-bWq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="myMemo" destination="S3U-wv-MsZ" id="tM9-Ta-kfK"/>

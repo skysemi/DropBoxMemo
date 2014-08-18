@@ -18,6 +18,7 @@
 }
 @property (weak, nonatomic) IBOutlet UITextView *myMemo;
 - (IBAction)ReturnButton:(UIBarButtonItem *)sender;
+- (IBAction)SaveButtonClick:(UIBarButtonItem *)sender;
 
 @end
 
@@ -64,14 +65,27 @@
     [self  SaveToMemoDataArray];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.myMemo.text forKey:@"MemoString"];
+    [defaults setObject:self.myMemo forKey:[NSString stringWithFormat:@"%@%d",@"MemoTestNo",self.TabelViewRow]];
+    [defaults setInteger:delegate.MemoDataArray.count forKey:@"MemoDataArrayCount"];
+    
+
+    
+    for(int i=0;i<delegate.MemoDataArray.count;i++){
+        MemoData *memo = delegate.MemoDataArray[i];
+        [defaults setObject:memo.MemoContent forKey:[NSString stringWithFormat:@"%@%d",@"MemoTestContentNo",i]];
+        [defaults setObject:memo.Title forKey:[NSString stringWithFormat:@"%@%d",@"MemoTestTitleNo",i]];
+        
+    }
+    
+    [defaults synchronize];
+    
 
 }
 
 -(void)LoadMemo
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.myMemo.text = [defaults objectForKey:@"MemoString"];
+    self.myMemo = [defaults objectForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestNo",self.TabelViewRow]];
     
 }
 
@@ -97,5 +111,9 @@
 
 - (IBAction)ReturnButton:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)SaveButtonClick:(UIBarButtonItem *)sender {
+    [self SaveMemo];
 }
 @end

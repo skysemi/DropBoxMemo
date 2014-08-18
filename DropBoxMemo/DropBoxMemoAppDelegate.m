@@ -9,11 +9,28 @@
 #import "DropBoxMemoAppDelegate.h"
 #import <DropboxSDK/DropboxSDK.h>
 
+#import "MemoData.h"
+
 @implementation DropBoxMemoAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	DBSession* dbSession =
+     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int count =(int)[defaults integerForKey:@"MemoDataArrayCount"];
+    
+    for(int i=0;i<count;i++){
+        MemoData *memo;
+        memo.MemoContent = [defaults stringForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestContentNo",i]];
+        memo.Title       = [defaults stringForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestTitleNo",i]];
+        self.MemoDataArray[i] = memo;
+        
+    }
+	
+    
+    
+    
+    
+    DBSession* dbSession =
     [[DBSession alloc]
      initWithAppKey:@"xxxxxx"
      appSecret:@"xxxxxx"
@@ -21,6 +38,9 @@
     [DBSession setSharedSession:dbSession];
 	
     return YES;
+    
+    
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -48,6 +68,15 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:self.MemoDataArray.count forKey:@"MemoDataArrayCount"];
+    
+    for(int i=0;i<self.MemoDataArray.count;i++){
+        [defaults setObject:self.MemoDataArray[i] forKey:[NSString stringWithFormat:@"%@%d",@"MemoTestNo",i]];
+        
+    }
+    [defaults synchronize];
+    
 }
 
 @end

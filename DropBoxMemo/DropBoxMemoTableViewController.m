@@ -42,6 +42,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
 //    DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
+    DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    
     
 	
 }
