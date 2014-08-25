@@ -91,9 +91,8 @@
 
 -(void)LoadUserDefault
 {
-    if(self.MemoDataArray == nil){
-        self.MemoDataArray = [[NSMutableArray alloc] init];
-    }
+    self.MemoDataArray = [[NSMutableArray alloc] init];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     int MemoDataArrayCount = [defaults integerForKey:@"MemoDataArrayCount"];
     
