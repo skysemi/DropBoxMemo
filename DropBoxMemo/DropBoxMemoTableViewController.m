@@ -17,6 +17,8 @@
 //MemoData *TargerMemo ;
     int TargetRow;
 }
+- (IBAction)EditButtnTap:(id)sender;
+
     
 @end
 
@@ -242,6 +244,32 @@
           DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
         [delegate.MemoDataArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+    if(editing){
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                    target:self action:@selector(RemoveRow)];
+        [self.navigationItem setLeftBarButtonItem:editButton animated:YES];
+    }else{
+         [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+        
+    }
+}
+
+-(void)RemoveRow
+{
+    
+}
+- (IBAction)EditButtnTap:(id)sender {
+    if(self.editing){
+        [self setEditing:NO animated:YES];
+    }else{
+        [self setEditing:YES animated:YES];
     }
 }
 @end

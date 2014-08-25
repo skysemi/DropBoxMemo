@@ -45,7 +45,11 @@
                                 <action selector="AddMemo:" destination="3a3-gq-3vi" id="vdY-Bp-Xja"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="編集" id="G2y-yd-k7d"/>
+                        <barButtonItem key="rightBarButtonItem" title="編集" id="G2y-yd-k7d">
+                            <connections>
+                                <action selector="EditButtnTap:" destination="3a3-gq-3vi" id="Mr3-MB-vhN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dt-wI-6ab" userLabel="First Responder" sceneMemberID="firstResponder"/>
