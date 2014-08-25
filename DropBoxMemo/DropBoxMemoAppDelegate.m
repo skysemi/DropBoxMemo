@@ -15,7 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  /*   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     int count =(int)[defaults integerForKey:@"MemoDataArrayCount"];
     
     for(int i=0;i<count;i++){
@@ -24,7 +24,8 @@
         memo.Title       = [defaults stringForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestTitleNo",i]];
         [self.MemoDataArray addObject:memo];
         
-    }
+    }*/
+    [self LoadUserDefault];
 	
     
     
@@ -87,5 +88,23 @@
     [defaults synchronize];
     
 }
+
+-(void)LoadUserDefault
+{
+    if(self.MemoDataArray == nil){
+        self.MemoDataArray = [[NSMutableArray alloc] init];
+    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int MemoDataArrayCount = [defaults integerForKey:@"MemoDataArrayCount"];
+    
+    for(int i=0;i<MemoDataArrayCount;i++){
+        MemoData *memo = [[MemoData alloc] init];
+        memo.MemoContent = [defaults stringForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestContentNo",i]];
+        memo.Title       = [defaults stringForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestTitleNo",i]];
+        [self.MemoDataArray addObject:memo];
+    }
+}
+
+
 
 @end

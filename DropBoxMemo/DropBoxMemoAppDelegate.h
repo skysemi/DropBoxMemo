@@ -18,4 +18,6 @@
 
 -(void)SaveToUserDefault;
 
+-(void)LoadUserDefault;
+
 @end

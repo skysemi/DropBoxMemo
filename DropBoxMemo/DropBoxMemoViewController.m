@@ -41,7 +41,8 @@
     
     
     
-    [self LoadMemo];
+    //[self LoadMemo];
+    
     
     
     self.timer =[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(SaveMemo) userInfo:nil repeats:YES];
@@ -54,6 +55,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     [self LoadFromMemoDataArray];
     
 }
@@ -73,7 +75,7 @@
     MemoData *TargetMemoData = [delegate.MemoDataArray objectAtIndex:self.TabelViewRow];
     
     [self.myMemo setText:TargetMemoData.MemoContent];
-    //[self.myMemo setText:@"--------------------------"];
+
     
 }
 
@@ -108,12 +110,7 @@
 
 }
 
--(void)LoadMemo
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    [self.myMemo setText:[defaults stringForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestNo",self.TabelViewRow]]];
-}
 
 - (DBRestClient *)restClient
 {

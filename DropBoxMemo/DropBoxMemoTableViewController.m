@@ -43,10 +43,9 @@
     
 //    DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
    // DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
+    DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [delegate LoadUserDefault];
     
-    
-    
-	
 }
 
 - (void)didReceiveMemoryWarning
