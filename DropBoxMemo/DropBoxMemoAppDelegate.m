@@ -68,11 +68,20 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+    
+}
+
+-(void)SaveToUserDefault
+{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:self.MemoDataArray.count forKey:@"MemoDataArrayCount"];
     
     for(int i=0;i<self.MemoDataArray.count;i++){
-        [defaults setObject:self.MemoDataArray[i] forKey:[NSString stringWithFormat:@"%@%d",@"MemoTestNo",i]];
+        MemoData *memo = [self.MemoDataArray objectAtIndex:i];
+        
+        [defaults setObject:memo.MemoContent forKey:[NSString stringWithFormat:@"%@%d",@"MemoTestContentNo",i]];
+        [defaults setObject:memo.Title forKey:[NSString stringWithFormat:@"%@%d",@"MemoTestTitleNo",i]];
         
     }
     [defaults synchronize];

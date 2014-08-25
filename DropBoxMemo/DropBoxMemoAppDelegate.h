@@ -15,4 +15,7 @@
 
 @property (strong,nonatomic) NSMutableArray *MemoDataArray;
 
+
+-(void)SaveToUserDefault;
+
 @end

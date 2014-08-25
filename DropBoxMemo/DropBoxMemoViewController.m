@@ -20,6 +20,8 @@
 - (IBAction)ReturnButton:(UIBarButtonItem *)sender;
 - (IBAction)SaveButtonClick:(UIBarButtonItem *)sender;
 
+@property (strong,nonatomic) NSTimer *timer;
+
 @end
 
 @implementation DropBoxMemoViewController
@@ -30,7 +32,10 @@
 	// Do any additional setup after loading the view, typically from a nib.
     delegate= (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    [self LoadFromMemoDataArray];
+    //[self LoadFromMemoDataArray];
+    
+
+
 
     
     
@@ -39,15 +44,36 @@
     [self LoadMemo];
     
     
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(SaveMemo) userInfo:nil repeats:YES];
+    self.timer =[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(SaveMemo) userInfo:nil repeats:YES];
+    
+    
+   // DropBoxMemoAppDelegate *delegate = (DropBoxMemoAppDelegate *)[[UIApplication sharedApplication] delegate];
+    //[delegate SaveToUserDefault];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self LoadFromMemoDataArray];
+    
+}
+
+
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [delegate SaveToUserDefault];
+    [self.timer invalidate];
+    
 }
 
 -(void)LoadFromMemoDataArray
 {
     MemoData *TargetMemoData = [delegate.MemoDataArray objectAtIndex:self.TabelViewRow];
     
-    self.myMemo.text = TargetMemoData.MemoContent;
-    
+    [self.myMemo setText:TargetMemoData.MemoContent];
+    //[self.myMemo setText:@"--------------------------"];
     
 }
 
@@ -85,8 +111,8 @@
 -(void)LoadMemo
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.myMemo = [defaults objectForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestNo",self.TabelViewRow]];
-    
+
+    [self.myMemo setText:[defaults stringForKey:[NSString stringWithFormat:@"%@%d",@"MemoTestNo",self.TabelViewRow]]];
 }
 
 - (DBRestClient *)restClient
